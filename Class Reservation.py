@@ -13,6 +13,30 @@ class CarReservation:
             self.createSampleCarsFile()
             self.availableCars()
 
+    def createSampleCarsFile(self):
+        """Create a sample available cars file if it doesn't exist"""
+        sample_cars = """1. Toyota Camry - $50/day
+2. Honda Civic - $45/day
+3. Ford Mustang - $80/day
+4. BMW 3 Series - $120/day
+5. Chevrolet Malibu - $55/day
+6. Nissan Altima - $48/day"""
+        
+        with open("availableCars.txt", "w") as file:
+            file.write(sample_cars)
+
+    def createSampleCarsFile(self):
+        """Create a sample available cars file if it doesn't exist"""
+        sample_cars = """1. Toyota Camry - $50/day
+2. Honda Civic - $45/day
+3. Ford Mustang - $80/day
+4. BMW 3 Series - $120/day
+5. Chevrolet Malibu - $55/day
+6. Nissan Altima - $48/day"""
+        
+        with open("availableCars.txt", "w") as file:
+            file.write(sample_cars)
+
     def currentReservations(self):
         try:
             with open("reservations.txt", "r") as file:
@@ -50,15 +74,15 @@ class CarReservation:
                 with open("reservations.txt", "r") as read_file:
                     if not read_file.read().strip():
                         # File is empty, add header
-                        file.write(f"{'Name'} {'Phone':>19} {'Vehicle Type':>25} {'Model':>14} {'Pick-up Date':>19} {'Return Date':>19}\n")
+                        file.write(f"{'Name':>19} {'Phone':>19} {'Vehicle Type':>19} {'Model':>19} {'Pick-up Date':>19} {'Return Date':>19}\n")
                         file.write("-" * 114 + "\n")
             except FileNotFoundError:
                 # File doesn't exist, add header
-                file.write(f"{'Name'} {'Phone':>19} {'Vehicle Type':>15} {'Model':>14} {'Pick-up Date':>19} {'Return Date':>19}\n")
+                file.write(f"{'Name':>19} {'Phone':>19} {'Vehicle Type':>19} {'Model':>19} {'Pick-up Date':>19} {'Return Date':>19}\n")
                 file.write("-" * 114 + "\n")
             
             # Write reservation data in formatted columns
-            file.write(f"{name} {phone:>15} {vehicle_type:>19} {vehicle_model:>19} {pickup_date:>19} {return_date:>19}\n")
+            file.write(f"{name:>19} {phone:>19} {vehicle_type:>19} {vehicle_model:>19} {pickup_date:>19} {return_date:>19}\n")
         
         print(f"\nReservation confirmed for {name}!")
         print(f"Vehicle: {vehicle_type} - {vehicle_model}")
@@ -91,7 +115,7 @@ class CarReservation:
                 elif choice == 3:
                     self.currentReservations()
                 elif choice == 4:
-                    print("\n Thank you for using Car Reservation System!")
+                    print("\nThank you for using Car Reservation System!")
                     print("Have a great day!")
                     break
                 else:
